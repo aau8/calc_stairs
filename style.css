@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-family: sans-serif;
+  list-style: none;
+}
+html,body,.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  margin: 100px 0 0 0;
+}
+.container {
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.title {
+  text-align: center;
+}
+.calc__block {
+  padding: 32px 0;
+  position: relative;
+}
+.calc__list:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #e3e3e3;
+}
+.calc__block-title {
+  padding: 12px 0;
+}
+.calc__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+.calc__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 0 24px 0 rgba(0,0,0,.2);
+  cursor: pointer;
+  transition: .2s;
+}
+.calc__item:hover {
+  transform: scale(1.05);
+}
+.calc__item._active {
+  border: 2px solid red;
+}
+.calc__item__bg {
+  max-width: 560px;
+}
+.calc-img {
+  width: 100%;
+  height: 160px;
+  padding: 12px;
+}
+
+.calc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.calc-label {
+  padding: 0 0 12px 0;
+}
+.calc__item__radio {
+  display: flex;
+  align-items: center;
+}
+.calc-radio {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #333333;
+}
+.calc-label {
+  user-select: none;
+  margin: 0 0 0 8px;
+}
+.calc__item__radio label {
+  padding: 0;
+}
+.calc__item__bg input {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 16px;
+}
+.calc__price__fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  box-shadow: 0 2px 24px 0 rgba(0,0,0,.2);
+  padding: 0;
+}
+.calc__price__wrapper {
+  max-width: 1180px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+.calc__price-btn {
+  width: 200px;
+  height: 32px;
+}
+.calc__price {
+  display: flex;
+  align-items: center;
+}
+.calc-price-value {
+  padding: 0 0 0 12px;
+}
+.calc__block__sizes {
+  padding: 0 0 100px 0;
+}

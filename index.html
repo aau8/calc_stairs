@@ -4,80 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="flex-wrapper">
-    <div class="calculator-content">
-      <div class="calculator-content-title">
-        <h1>Рассчитать ипотеку</h1>
-      </div>
-      <div class="calculator-content-body">
-        <div class="calculator-content-body-left">
-          <div class="calculator-content-body-left-inputs">
-            <div class="input-wrapper">
-              <div class="title">Стоимость недвижимости</div>
-              <div class="input">
-                <input type="number" id="total-cost" value="0">
+  <div class="wrapper">
+    <div class="container">
+      <div class="calc">
+        <h2 class="title">Калькулятор</h2>
+        <!-- Типы лестниц -->
+        <div class="calc__block">
+          <h3 class="title calc__block-title">Тип лестницы</h3>
+          <ul class="calc__list">
+            <li class="calc__item calc__item__type" data-price="85000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/type_1.jpg" alt="Прямая лестница">
               </div>
-              <div class="input">
-                <input type="range" min="0" max="1000000" id="total-cost-range" value="0" class="input-range">
+              <p class="calc-label">Прямая</p>
+            </li>
+            <li class="calc__item calc__item__type" data-price="115000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/type_2.jpg" alt="Прямая лестница">
               </div>
-            </div>
-            <div class="input-wrapper">
-              <div class="title">Первоначальный взнос</div>
-              <div class="input">
-                <input type="number" id="an-initial-fee" value="0">
+              <p class="calc-label">С поворотом на 90</p>
+            </li>
+            <li class="calc__item calc__item__type" data-price="131000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/type_3.jpg" alt="Прямая лестница">
               </div>
-              <div class="input">
-                <input type="range" min="10000" max="1000000" id="an-initial-fee-range" value="0" class="input-range">
+              <p class="calc-label">С поворотом на 180</p>
+            </li>
+            <li class="calc__item calc__item__type" data-price="115000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/type_4.jpg" alt="Прямая лестница">
               </div>
-            </div>
-            <div class="input-wrapper">
-              <div class="title">Срок кредита</div>
-              <div class="input">
-                <input type="number" id="credit-term" value="0">
+              <p class="calc-label">На 90 с площадкой</p>
+            </li>
+            <li class="calc__item calc__item__type" data-price="131000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/type_5.jpg" alt="Прямая лестница">
               </div>
-              <div class="input">
-                <input type="range" min="1" max="20" id="credit-term-range" value="0" class="input-range">
-              </div>
-            </div>
-          </div>
-          <div class="calculator-content-title">
-            <h2>Выбрать банк</h2>
-          </div>
-          <div class="calculator-content-body-left-btns">
-            <button data-name="alfa" class="bank active">
-              <div class="text">Альфа-банк</div>
-              <div class="value">8,7%</div>
-            </button>
-            <button data-name="sberbank" class="bank">
-              <div class="text">Сбербанк</div>
-              <div class="value">8,4%</div>
-            </button>
-            <button data-name="pochta" class="bank">
-              <div class="text">Почта-банк</div>
-              <div class="value">7,9%</div>
-            </button>
-            <button data-name="tinkoff" class="bank">
-              <div class="text">Тинькофф-банк</div>
-              <div class="value">9,2%</div>
-            </button>
-          </div>
+              <p class="calc-label">На 180 с площадкой</p>
+            </li>
+          </ul>
         </div>
-        <div class="calculator-content-body-right">
-          <div class="final-results-wrapper">
-            <div class="final-result-item">
-              <div class="title">Сумма кредита</div>
-              <div class="value" id="amount-of-credit">0 <span>Р</span></div>
-            </div>
-            <div class="final-result-item">
-              <div class="title">Ежемесячный платеж</div>
-              <div class="value" id="monthly-payment">0 <span>Р</span></div>
-            </div>
-            <div class="final-result-item">
-              <div class="title">Рекомендуемый доход</div>
-              <div class="value" id="recomended-income">0 <span>Р</span></div>
+        <!-- Выбор материала -->
+        <div class="calc__block">
+          <h3 class="title calc__block-title">Выбор материала</h3>
+          <ul class="calc__list">
+            <li class="calc__item calc__item__material" data-price="74000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/material_1.png" alt="Прямая лестница">
+              </div>
+              <p class="calc-label">Сосна</p>
+            </li>
+            <li class="calc__item calc__item__material" data-price="111000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/material_2.png" alt="Прямая лестница">
+              </div>
+              <p class="calc-label">Лиственница</p>
+            </li>
+            <li class="calc__item calc__item__material" data-price="110000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/material_3.png" alt="Прямая лестница">
+              </div>
+              <p class="calc-label">Ясень</p>
+            </li>
+            <li class="calc__item calc__item__material" data-price="110000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/material_4.png" alt="Прямая лестница">
+              </div>
+              <p class="calc-label">Бук</p>
+            </li>
+            <li class="calc__item calc__item__material" data-price="140000" data-selected="false">
+              <div class="calc-img">
+                <img src="img/material_5.png" alt="Прямая лестница">
+              </div>
+              <p class="calc-label">Дуб</p>
+            </li>
+          </ul>
+        </div>
+        <!-- Покрытие -->
+        <div class="calc__block">
+          <h3 class="title calc__block-title">Покрытие</h3>
+          <ul class="calc__list">
+            <li class="calc__item__radio">
+              <input class="calc-radio" id="noCover" type="radio" name="cover" data-price="0">
+              <label for="noCover" class="calc-label" >Без покрытия</label>
+            </li>
+            <li class="calc__item__radio">
+              <input class="calc-radio" id="coverOne" type="radio" name="cover" data-price="31000">
+              <label for="coverOne" class="calc-label" >Лаг + Грунт</label>
+            </li>
+            <li class="calc__item__radio">
+              <input class="calc-radio" id="coverTwo" type="radio" name="cover" data-price="47000">
+              <label for="coverTwo" class="calc-label" >Морилка + Грунт + Лак</label>
+            </li>
+          </ul>
+        </div>
+        <!-- Наличие подступенка -->
+        <div class="calc__block">
+          <h3 class="title calc__block-title">Наличие подступенка</h3>
+          <ul class="calc__list">
+            <li class="calc__item calc__item__bg calc__item__riser" data-price="0" data-selected="false">
+              <div class="calc-img">
+                <img src="img/degree_1.jpg" alt="Прямая лестница">
+              </div>
+              <p class="calc-label">Без подступенка</p>
+            </li>
+            <li class="calc__item calc__item__bg calc__item__riser" data-price="6" data-selected="false">
+              <div class="calc-img">
+                <img src="img/degree_2.jpg" alt="Прямая лестница">
+              </div>
+              <p class="calc-label">С подступенком</p>
+            </li>
+          </ul>
+        </div>
+        <!-- Размеры лестницы -->
+        <div class="calc__block calc__block__sizes">
+          <h3 class="title calc__block-title">Размеры лестницы</h3>
+          <ul class="calc__list">
+            <li class="calc__item calc__item__bg" data-price="74000" data-selected="false">
+              <input id="stairsWidth" value="100" max="200" step="5" type="number" placeholder="Ширина">
+            </li>
+            <li class="calc__item calc__item__bg" data-price="111000" data-selected="false">
+              <input id="stairsHeight" value="320" step="5" type="number" placeholder="Высота">
+            </li>
+          </ul>
+        </div>
+        <!-- Рассчет -->
+        <div class="calc__block calc__price__fixed">
+          <div class="calc__price__wrapper">
+            <button class="calc__price-btn">Посчитать</button>
+            <div class="calc__price">
+              <h3 class="title calc__block-title">Цена</h3>
+              <p class="calc-price-value" id="calcPriceValue">0</p>
             </div>
           </div>
         </div>

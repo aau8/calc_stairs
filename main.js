@@ -1,78 +1,141 @@
-// Сначала получить все рабочие id и class
+// ТП - Тип лестницы
+// Фиксированная цена
 
-// Значение из текстовых инпутов
+// М - Материал
+// Фиксированная цена
 
-const totalCost = document.querySelector('#total-cost'),
-      anInitialFee = document.querySelector('#an-initial-fee'),
-      creditTerm = document.querySelector('#credit-term');
-      
-// Значение из range инпутов
+// П - Покрытие
+// Фиксированная цена 
 
-const totalCostRange = document.querySelector('#total-cost-range'),
-      anInitialFeeRange = document.querySelector('#an-initial-fee-range'),
-      creditTermRange = document.querySelector('#credit-term-range');
+// Пс - Подступеньки
+// Есть: 6%
 
-// Итоговые значения
+// Ш - Ширина
+// Каждые 5см изменяется на 2%. Начальная позиция на ширине 100см (0%). от 70 до 80 фиксированные 8%
 
-const totalAmountOfCredit = document.querySelector('#amount-of-credit'),
-      totalMonthlyPayment = document.querySelector('#monthly-payment'),
-      totalRecomendedIncome = document.querySelector('#recomended-income');
+// В - Высота
 
-// Все кнопки с процентной ставкой банков
+// Формула
+// ТП + М + П + Пс% + Ш% + В%
 
-const bankBtns = document.querySelectorAll('.bank');
+// Комплектующие
 
-// Все range
+const types = document.querySelectorAll('.calc__item__type'), // ТП - Тип лестницы
+      materials = document.querySelectorAll('.calc__item__material'), // М - Материал
+      covers = document.querySelectorAll('.calc-radio'), // П - Покрытие
+      risers = document.querySelectorAll('.calc__item__riser'); // Пс - Подступеньки
 
-const inputsRange = document.querySelectorAll('.input-range');
+// Размеры
 
-const assignValue = () => {
-  totalCost.value = totalCostRange.value;
-  anInitialFee.value = anInitialFeeRange.value;
-  creditTerm.value = creditTermRange.value;
-};
-assignValue();
+const width = document.querySelector('#stairsWidth'), // Ш - Ширина
+      height = document.querySelector('#stairsHeight'); // В - Высота
 
-const banks = [
+// Рассчет
+
+const price = document.querySelector('#calcPriceValue'), // Ц - Цена
+      btn = document.querySelector('.calc__price-btn');
+
+// Данные для калькулятора
+
+const dataCalc = [
   {
-    name: 'alfa',
-    percent: 8.7
-  },
-  {
-    name: 'sberbank',
-    percent: 8.4
-  },
-  {
-    name: 'pochta',
-    percent: 7.9
-  },
-  {
-    name: 'tinkoff',
-    percent: 9.2
+    type: '',
+    material: '',
+    cover: '',
+    riser: '',
+    width: '',
+    height: ''
   }
 ];
 
-let currentPercent = banks[0].percent;
+// Рассчет
+// ТП + М + П + Пс% + Ш% + В%
+btn.addEventListener('click', () => {
+  console.log(dataCalc);
+  let percentCalc = (+dataCalc[0].riser / 100) + (+dataCalc[0].width / 100) + (+dataCalc[0].height / 100)
+  let integerCalc = +dataCalc[0].type + +dataCalc[0].material + +dataCalc[0].cover;
+  price.textContent = integerCalc + (integerCalc * percentCalc);
+  howWidthPercent();
+});
 
-for (let bank of bankBtns) {
-  bank.addEventListener('click', function() {
-    for (let items of bankBtns) {
-      items.classList.remove('active');
+// Тип лестницы
+
+for (let type of types) {
+  type.addEventListener('click', () => {
+    for (let typeRemoveActive of types) {
+      typeRemoveActive.classList.remove('_active');
     }
-    bank.classList.add('active');
-    takeActiveBank(bank);
+    type.classList.add('_active');
+
+    dataCalc[0].type = type.dataset.price;
   });
 }
 
-const takeActiveBank = currentActive => {
-  const dataAttrValue = currentActive.dataset.name;
-  const currentBank = banks.find(bank => bank.name === dataAttrValue);
-  currentPercent = currentBank.percent;
+// Материалы
+
+for (let material of materials) {
+  material.addEventListener('click', () => {
+    for (let materialRemoveActive of materials) {
+      materialRemoveActive.classList.remove('_active');
+    }
+    material.classList.add('_active');
+
+    dataCalc[0].material = material.dataset.price;
+  });
 }
 
-for (let input of inputsRange) {
-  input.addEventListener('input', () => {
-    assignValue();
-    console.log(totalCost.value);
-  })
+// Материалы
+
+for (let cover of covers) {
+  cover.addEventListener('click', () => {
+    dataCalc[0].cover = cover.dataset.price;
+  });
+}
+
+// Подступеньки
+
+for (let riser of risers) {
+  riser.addEventListener('click', () => {
+    for (let riserRemoveActive of risers) {
+      riserRemoveActive.classList.remove('_active');
+    }
+    riser.classList.add('_active');
+
+    dataCalc[0].riser = riser.dataset.price;
+  });
+}
+
+
+const widthPercentList = [
+  ["80","-8%"],
+  ["85","-6%"],
+  ["90","-4%"],
+  ["95","-2%"],
+  ["100","0"],
+  ["105","5%"],
+  ["110","10%"],
+  ["115","15%"],
+  ["120","20%"],
+  ["125","25%"],
+  ["130","30%"],
+  ["135","35%"],
+  ["140","40%"],
+  ["145","45%"],
+  ["150","50%"],
+  ["155","55%"],
+  ["160","60%"],
+  ["165","65%"],
+  ["170","70%"],
+  ["175","75%"],
+  ["180","80%"],
+  ["185","85%"],
+  ["190","90%"],
+  ["195","95%"],
+  ["200","100%"]
+]
+
+const howWidthPercent = () => {
+  const howWidthPercent = widthPercentList.find(item => item === width.value);
+  // dataCalc[0].width = howWidthPercent;
+  console.log(howWidthPercent)
 }
